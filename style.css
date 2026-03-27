@@ -565,3 +565,10 @@ textarea.answer-box{
 .footer p{
   color: #d9efe4;
 }
+.part-label{
+  display:block;
+  margin-top:14px;
+  margin-bottom:6px;
+  font-weight:700;
+  color:#f3fff8;
+}
