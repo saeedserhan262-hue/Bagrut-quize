@@ -1,606 +1,267 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GeoSpark | المتواليات الهندسية - بجروت 571</title>
-  <meta name="description" content="موقع تفاعلي احترافي لأسئلة قصيرة وذكية في المتواليات الهندسية بمستوى بجروت 571" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- خطوط -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Bagrut Math Challenge</title>
 
-  <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<!-- MathJax -->
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(','\\)'], ['$', '$']] }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
 </head>
+
 <body>
-  <canvas id="bgCanvas"></canvas>
 
-  <header class="hero">
-    <nav class="topbar">
-      <div class="brand">
-        <span class="brand-icon">✦</span>
-        <span>GeoSpark</span>
-      </div>
-      <button id="themeBtn" class="ghost-btn" aria-label="تبديل الألوان">تبديل الواجهة</button>
-    </nav>
+<h1 style="text-align:center;">💡 تحدي البجروت - متواليات</h1>
 
-    <div class="hero-content">
-      <div class="hero-text">
-        <span class="badge">بجروت 571 • متواليات هندسية</span>
-        <h1>أسئلة قصيرة، ذكية، وفيها <span>Trick</span></h1>
-        <p>
-          موقع رياضيات تفاعلي مصمم بشكل احترافي لعرض أسئلة قصيرة من مستوى البجروت،
-          مع دقة رياضية، رموز واضحة، وحلول مخفية تظهر عند الطلب.
-        </p>
+<div class="questions-grid">
 
-        <div class="hero-actions">
-          <a href="#questions" class="primary-btn">ابدأ التحدي</a>
-          <a href="#about" class="secondary-btn">عن الموقع</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat-card">
-            <strong>12</strong>
-            <span>سؤالًا قصيرًا</span>
-          </div>
-          <div class="stat-card">
-            <strong>100%</strong>
-            <span>رموز رياضية</span>
-          </div>
-          <div class="stat-card">
-            <strong>571</strong>
-            <span>مستوى بجروت</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-panel">
-        <div class="equation-card floating">
-          <div class="eq-title">فكرة الدرس</div>
-          <div class="eq-body">
-            \[
-              a_n = a_1 \cdot r^{n-1}
-            \]
-            \[
-              S_n = \frac{a_1(r^n-1)}{r-1}, \quad r \ne 1
-            \]
-            \[
-              S_\infty = \frac{a_1}{1-r}, \quad |r| < 1
-            \]
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="about" class="section glass">
-      <div class="section-head">
-        <span class="mini-tag">عن المشروع</span>
-        <h2>لماذا هذا الموقع مميز؟</h2>
-      </div>
-
-      <div class="features">
-        <article class="feature">
-          <h3>تصميم احترافي</h3>
-          <p>خلفية متحركة، بطاقات زجاجية، ألوان قوية، وتجربة عرض ممتازة للمعلّمة والطلاب.</p>
-        </article>
-        <article class="feature">
-          <h3>أسئلة قصيرة لكن ذكية</h3>
-          <p>التركيز على أسئلة بجروت قصيرة فيها فكرة خفية أو خطوة تحتاج انتباه.</p>
-        </article>
-        <article class="feature">
-          <h3>حلول مخفية</h3>
-          <p>كل سؤال يحتوي على زر لإظهار الحل فقط عند الحاجة، حتى يبقى التحدي موجودًا.</p>
-        </article>
-      </div>
-      <button onclick="showAllSolutions()">إظهار الحلول</button>
-
-<div id="solutions" style="display:none;">
-<h2>الحلول</h2>
-
-<p>1) a = 0</p>
-<p>3) r = 2</p>
-<p>4) x = 1/2</p>
-<p>5) x = 4</p>
-<p>6) n = 6</p>
-<p>7) r = 3</p>
-<p>9) 16</p>
-<p>10) r = 2</p>
-<p>11) 63</p>
-<p>12) x = 1/2</p>
-
-</div>
-  <article class="question-card">
+<!-- 1 -->
+<article class="question-card">
 <h3>سؤال 1</h3>
 <p>
-معطى:
+معطى أن:
 \[
-1\cdot2 + 2\cdot3 + \cdots + n(n+1)
-= \frac{n(n+a)(n+2)}{3}
+8+24+48+\cdots+n(n+2)
+=
+\frac{n(n+a)(n+4)}{6}
 \]
 
-أوجد \(a\)
-</p>
-<input class="answer-box">
-</article>
+(أ) أوجد قيمة \(a\) بحيث يتحقق التساوي عند \(n=2\)
 
-<article class="question-card">
-<h3>سؤال 2</h3>
-<p>
-برهن بالاستقراء:
-\[
-1+2+4+\cdots+2^n = 2^{n+1}-1
-\]
+(ب) برهن بالاستقراء أن التساوي صحيح لكل \(n\) زوجي.
 </p>
 <textarea class="answer-box"></textarea>
 </article>
 
+<!-- 2 -->
+<article class="question-card">
+<h3>سؤال 2</h3>
+<p>
+معطى:
+\[
+1^2+2^2+3^2+\cdots+n^2
+=
+\frac{n(n+1)(2n+a)}{6}
+\]
+
+(أ) أوجد \(a\)
+
+(ب) برهن صحة المتساوية لكل \(n\in\mathbb{N}\)
+</p>
+<textarea class="answer-box"></textarea>
+</article>
+
+<!-- 3 -->
 <article class="question-card">
 <h3>سؤال 3</h3>
 <p>
+متوالية هندسية:
 \[
-a_1 + a_2 = 12,\quad a_3 = 16
+a_1=x,\quad r=2
 \]
 
-أوجد \(r\)
+إذا كان:
+\[
+S_n = x(2^n-1)=126
+\]
+
+(أ) أوجد \(x\)
+
+(ب) أوجد \(n\)
 </p>
 <input class="answer-box">
 </article>
 
+<!-- 4 -->
 <article class="question-card">
 <h3>سؤال 4</h3>
 <p>
+متوالية هندسية لا نهائية:
 \[
-3+3x+3x^2+\cdots = 6
+4+4x+4x^2+\cdots=8
 \]
 
-أوجد \(x\)
+(أ) أوجد \(x\)
+
+(ب) تحقق من شرط التقارب
 </p>
 <input class="answer-box">
 </article>
 
+<!-- 5 -->
 <article class="question-card">
 <h3>سؤال 5</h3>
 <p>
-\[
-a_1 = x,\quad r=3,\quad S_3=52
-\]
-
-أوجد \(x\)
-</p>
-<input class="answer-box">
-</article>
-
-<article class="question-card">
-<h3>سؤال 6</h3>
-<p>
-\[
-2+4+8+\cdots = 126
-\]
-
-أوجد عدد الحدود
-</p>
-<input class="answer-box">
-</article>
-
-<article class="question-card">
-<h3>سؤال 7</h3>
-<p>
+في متوالية هندسية:
 \[
 a_2=6,\quad a_5=162
 \]
 
-أوجد \(r\)
+(أ) أوجد \(r\)
+
+(ب) أوجد \(a_1\)
 </p>
 <input class="answer-box">
 </article>
 
+<!-- 6 -->
 <article class="question-card">
-<h3>سؤال 8</h3>
+<h3>سؤال 6</h3>
 <p>
-برهن:
+معطى:
 \[
-1+3+5+\cdots+(2n-1)=n^2
+2+4+8+\cdots+2^n=126
+\]
+
+(أ) أوجد \(n\)
+
+(ب) برهن أن:
+\[
+S_n=2(2^n-1)
 \]
 </p>
 <textarea class="answer-box"></textarea>
 </article>
 
+<!-- 7 -->
 <article class="question-card">
-<h3>سؤال 9</h3>
+<h3>سؤال 7</h3>
 <p>
-\[
-a_1=8,\quad r=\frac12
-\]
-
-أوجد المجموع اللانهائي
-</p>
-<input class="answer-box">
-</article>
-
-<article class="question-card">
-<h3>سؤال 10</h3>
-<p>
+متوالية هندسية:
 \[
 a_1+a_2+a_3=21,\quad a_2=6
 \]
 
-أوجد \(r\)
+(أ) أوجد \(r\)
+
+(ب) أوجد \(a_1\)
 </p>
 <input class="answer-box">
 </article>
 
+<!-- 8 -->
+<article class="question-card">
+<h3>سؤال 8</h3>
+<p>
+برهن بالاستقراء:
+\[
+1+3+5+\cdots+(2n-1)=n^2
+\]
+
+ثم استنتج:
+\[
+2+4+6+\cdots+2n=n(n+1)
+\]
+</p>
+<textarea class="answer-box"></textarea>
+</article>
+
+<!-- 9 -->
+<article class="question-card">
+<h3>سؤال 9</h3>
+<p>
+متوالية هندسية:
+\[
+a_1=8,\quad r=\frac{1}{2}
+\]
+
+(أ) أوجد \(S_\infty\)
+
+(ب) كم حدًا نحتاج حتى يكون المجموع أكبر من 15؟
+</p>
+<input class="answer-box">
+</article>
+
+<!-- 10 -->
+<article class="question-card">
+<h3>سؤال 10</h3>
+<p>
+معطى:
+\[
+1+2+4+\cdots+2^n=2^{n+1}-1
+\]
+
+(أ) برهن بالاستقراء
+
+(ب) أوجد مجموع:
+\[
+2+4+8+\cdots+2^{10}
+\]
+</p>
+<textarea class="answer-box"></textarea>
+</article>
+
+<!-- 11 -->
 <article class="question-card">
 <h3>سؤال 11</h3>
 <p>
+متوالية هندسية:
 \[
 a_1=1,\quad r=2
 \]
 
-أوجد \(S_6\)
+(أ) أوجد \(S_6\)
+
+(ب) أوجد \(S_n\)
 </p>
 <input class="answer-box">
 </article>
 
+<!-- 12 -->
 <article class="question-card">
 <h3>سؤال 12</h3>
 <p>
+معطى:
 \[
-4+4x+4x^2+\cdots = 8
+3+3x+3x^2+\cdots=6
 \]
 
-أوجد \(x\)
+(أ) أوجد \(x\)
+
+(ب) أوجد مجموع أول 5 حدود
 </p>
 <input class="answer-box">
 </article>
-      <div class="questions-grid">
-        <!-- 1 -->
-        <article class="question-card">
-          <div class="q-number">01</div>
-          <h3>إيجاد أساس المتوالية</h3>
-          <p>
-            في متوالية هندسية:
-            \[
-              a_1 = 3,\quad a_4 = 24
-            \]
-            أوجدي أساس المتوالية \(r\).
-          </p>
-          <button class="toggle-btn" data-target="sol1">إظهار الحل</button>
-          <div id="sol1" class="solution">
-            \[
-              a_4 = a_1 r^3 \Rightarrow 24 = 3r^3 \Rightarrow r^3 = 8 \Rightarrow r = 2
-            \]
-          </div>
-        </article>
 
-        <!-- 2 -->
-        <article class="question-card">
-          <div class="q-number">02</div>
-          <h3>Trick بسيط</h3>
-          <p>
-            في متوالية هندسية:
-            \[
-              a_2 = 10,\quad a_5 = 80
-            \]
-            أوجدي \(r\).
-          </p>
-          <button class="toggle-btn" data-target="sol2">إظهار الحل</button>
-          <div id="sol2" class="solution">
-            \[
-              a_5 = a_2 r^3 \Rightarrow 80 = 10r^3 \Rightarrow r^3 = 8 \Rightarrow r = 2
-            \]
-          </div>
-        </article>
+</div>
 
-        <!-- 3 -->
-        <article class="question-card">
-          <div class="q-number">03</div>
-          <h3>مجموع حدّين متتاليين</h3>
-          <p>
-            إذا كان:
-            \[
-              a_1 + a_2 = 12,\qquad a_2 + a_3 = 24
-            \]
-            أوجدي \(r\).
-          </p>
-          <button class="toggle-btn" data-target="sol3">إظهار الحل</button>
-          <div id="sol3" class="solution">
-            نفرض \(a_1 = x\) إذًا:
-            \[
-              a_2 = xr,\quad a_3 = xr^2
-            \]
-            ومنه:
-            \[
-              x(1+r)=12
-            \]
-            \[
-              xr(1+r)=24
-            \]
-            بقسمة المعادلة الثانية على الأولى:
-            \[
-              r = 2
-            \]
-          </div>
-        </article>
+<!-- زر الحل -->
+<div style="text-align:center; margin-top:40px;">
+<button onclick="showSolutions()">إظهار الحلول</button>
+</div>
 
-        <!-- 4 -->
-        <article class="question-card">
-          <div class="q-number">04</div>
-          <h3>حدّ سالب مخادع</h3>
-          <p>
-            في متوالية هندسية:
-            \[
-              a_1 = 5,\quad r = -2
-            \]
-            أوجدي \(a_4\).
-          </p>
-          <button class="toggle-btn" data-target="sol4">إظهار الحل</button>
-          <div id="sol4" class="solution">
-            \[
-              a_4 = a_1 r^3 = 5(-2)^3 = 5(-8) = -40
-            \]
-            الــ trick هنا في الإشارة السالبة.
-          </div>
-        </article>
+<!-- الحلول -->
+<div id="solutions" style="display:none; margin-top:30px;">
+<h2>الحلول</h2>
 
-        <!-- 5 -->
-        <article class="question-card">
-          <div class="q-number">05</div>
-          <h3>إيجاد الحد الأول</h3>
-          <p>
-            في متوالية هندسية:
-            \[
-              r = 3,\quad a_5 = 486
-            \]
-            أوجدي \(a_1\).
-          </p>
-          <button class="toggle-btn" data-target="sol5">إظهار الحل</button>
-          <div id="sol5" class="solution">
-            \[
-              a_5 = a_1 r^4
-            \]
-            \[
-              486 = a_1 \cdot 3^4 = 81a_1
-            \]
-            \[
-              a_1 = \frac{486}{81} = 6
-            \]
-          </div>
-        </article>
+<p>1) a = 2</p>
+<p>2) a = 1</p>
+<p>3) x=2 , n=6</p>
+<p>4) x=1/2</p>
+<p>5) r=3 , a1=2</p>
+<p>6) n=6</p>
+<p>7) r=2 , a1=3</p>
+<p>9) 16</p>
+<p>11) 63</p>
+<p>12) x=1/2</p>
 
-        <!-- 6 -->
-        <article class="question-card">
-          <div class="q-number">06</div>
-          <h3>مجموع متوالية نهائية</h3>
-          <p>
-            أوجدي مجموع المتوالية اللانهائية:
-            \[
-              a_1 = 7,\quad r = \frac{1}{3}
-            \]
-          </p>
-          <button class="toggle-btn" data-target="sol6">إظهار الحل</button>
-          <div id="sol6" class="solution">
-            بما أن:
-            \[
-              |r| < 1
-            \]
-            إذًا المجموع موجود:
-            \[
-              S_\infty = \frac{a_1}{1-r}
-              = \frac{7}{1-\frac13}
-              = \frac{7}{\frac23}
-              = \frac{21}{2}
-            \]
-          </div>
-        </article>
+</div>
 
-        <!-- 7 -->
-        <article class="question-card">
-          <div class="q-number">07</div>
-          <h3>هل يوجد مجموع لا نهائي؟</h3>
-          <p>
-            هل يوجد مجموع لا نهائي للمتوالية:
-            \[
-              a_1 = 2,\quad r = -3
-            \]
-            ؟
-          </p>
-          <button class="toggle-btn" data-target="sol7">إظهار الحل</button>
-          <div id="sol7" class="solution">
-            لا. لأن شرط وجود مجموع لا نهائي هو:
-            \[
-              |r| < 1
-            \]
-            وهنا:
-            \[
-              |-3| = 3 > 1
-            \]
-            إذًا لا يوجد مجموع لا نهائي.
-          </div>
-        </article>
+<script>
+function showSolutions(){
+  const s = document.getElementById("solutions");
+  s.style.display = (s.style.display === "none") ? "block" : "none";
+}
+</script>
 
-        <!-- 8 -->
-        <article class="question-card">
-          <div class="q-number">08</div>
-          <h3>مقارنة سريعة</h3>
-          <p>
-            في متوالية هندسية موجبة الحدود:
-            \[
-              a_3 = 18,\quad a_4 = 54
-            \]
-            أوجدي \(a_1\).
-          </p>
-          <button class="toggle-btn" data-target="sol8">إظهار الحل</button>
-          <div id="sol8" class="solution">
-            أولًا:
-            \[
-              r = \frac{a_4}{a_3} = \frac{54}{18} = 3
-            \]
-            ثم:
-            \[
-              a_3 = a_1 r^2 \Rightarrow 18 = 9a_1 \Rightarrow a_1 = 2
-            \]
-          </div>
-        </article>
-
-        <!-- 9 -->
-        <article class="question-card">
-          <div class="q-number">09</div>
-          <h3>سؤال فيه انتباه للترتيب</h3>
-          <p>
-            إذا كان:
-            \[
-              a_1 = 4,\quad r = \frac12
-            \]
-            أوجدي:
-            \[
-              a_1 + a_2 + a_3
-            \]
-          </p>
-          <button class="toggle-btn" data-target="sol9">إظهار الحل</button>
-          <div id="sol9" class="solution">
-            \[
-              a_2 = 2,\quad a_3 = 1
-            \]
-            إذًا:
-            \[
-              a_1 + a_2 + a_3 = 4+2+1=7
-            \]
-          </div>
-        </article>
-
-        <!-- 10 -->
-        <article class="question-card">
-          <div class="q-number">10</div>
-          <h3>إيجاد عدد الحدود</h3>
-          <p>
-            في متوالية هندسية:
-            \[
-              a_1 = 2,\quad r = 2
-            \]
-            إذا كان:
-            \[
-              a_n = 64
-            \]
-            أوجدي \(n\).
-          </p>
-          <button class="toggle-btn" data-target="sol10">إظهار الحل</button>
-          <div id="sol10" class="solution">
-            \[
-              a_n = a_1 r^{n-1}
-            \]
-            \[
-              64 = 2 \cdot 2^{n-1} = 2^n
-            \]
-            \[
-              64 = 2^6 \Rightarrow n=6
-            \]
-          </div>
-        </article>
-
-        <!-- 11 -->
-        <article class="question-card">
-          <div class="q-number">11</div>
-          <h3>مجموع أول 4 حدود</h3>
-          <p>
-            في متوالية هندسية:
-            \[
-              a_1 = 1,\quad r = 3
-            \]
-            أوجدي:
-            \[
-              S_4
-            \]
-          </p>
-          <button class="toggle-btn" data-target="sol11">إظهار الحل</button>
-          <div id="sol11" class="solution">
-            \[
-              S_4 = \frac{a_1(r^4-1)}{r-1}
-              = \frac{1(3^4-1)}{3-1}
-              = \frac{81-1}{2}
-              = \frac{80}{2}
-              = 40
-            \]
-          </div>
-        </article>
-
-        <!-- 12 -->
-        <article class="question-card">
-          <div class="q-number">12</div>
-          <h3>سؤال ذكي جدًا</h3>
-          <p>
-            في متوالية هندسية:
-            \[
-              a_1 + a_3 = 20,\qquad a_2 = 6
-            \]
-            أوجدي \(r\) إذا كان \(r>0\).
-          </p>
-          <button class="toggle-btn" data-target="sol12">إظهار الحل</button>
-          <div id="sol12" class="solution">
-            نفرض:
-            \[
-              a_1 = x,\quad a_2 = xr,\quad a_3 = xr^2
-            \]
-            ومعطى:
-            \[
-              xr = 6 \Rightarrow x = \frac{6}{r}
-            \]
-            وأيضًا:
-            \[
-              x + xr^2 = 20
-            \]
-            نعوض:
-            \[
-              \frac{6}{r} + \frac{6}{r}r^2 = 20
-            \]
-            \[
-              \frac{6}{r} + 6r = 20
-            \]
-            نضرب بـ \(r\):
-            \[
-              6 + 6r^2 = 20r
-            \]
-            \[
-              3r^2 - 10r + 3 = 0
-            \]
-            \[
-              (3r-1)(r-3)=0
-            \]
-            إذًا:
-            \[
-              r=\frac13 \quad \text{أو} \quad r=3
-            \]
-            وكلاهما موجب.
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section glass final-box">
-      <div class="section-head center">
-        <span class="mini-tag">ملاحظة</span>
-        <h2>هذا الموقع مناسب للعرض المدرسي</h2>
-      </div>
-      <p>
-        يمكنك تعديل العنوان، اسمك، أو إضافة قسم خاص باسم المعلمة أو المدرسة بسهولة داخل الكود.
-      </p>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>تم تصميم الموقع لعرض أسئلة قصيرة في المتواليات الهندسية • مستوى بجروت 571</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
