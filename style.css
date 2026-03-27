@@ -572,3 +572,10 @@ textarea.answer-box{
   font-weight:700;
   color:#f3fff8;
 }
+.part-label{
+  display:block;
+  margin-top:14px;
+  margin-bottom:6px;
+  font-weight:700;
+  color:#f3fff8;
+}
