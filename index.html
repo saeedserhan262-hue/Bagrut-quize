@@ -1,267 +1,343 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bagrut Math Challenge | بجروت متقدم</title>
+  <meta name="description" content="موقع تفاعلي لأسئلة بجروت متقدمة في المتتاليات والاستقراء الرياضي" />
+  <link rel="stylesheet" href="style.css" />
 
-<title>Bagrut Math Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-
-<!-- MathJax -->
-<script>
-window.MathJax = {
-  tex: { inlineMath: [['\\(','\\)'], ['$', '$']] }
-};
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)'], ['$', '$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
+<body class="chalk-theme">
 
-<body>
+  <div class="chalk-overlay"></div>
 
-<h1 style="text-align:center;">💡 تحدي البجروت - متواليات</h1>
+  <header class="hero new-hero">
+    <nav class="topbar">
+      <div class="brand">
+        <span class="brand-icon">∑</span>
+        <span>Bagrut Math Challenge</span>
+      </div>
+      <button id="themeBtn" class="ghost-btn" aria-label="تبديل النمط">تبديل الواجهة</button>
+    </nav>
 
-<div class="questions-grid">
+    <div class="hero-content single-layout">
+      <div class="hero-text centered-hero">
+        <span class="badge">بجروت 571 • مستوى متقدم</span>
+        <h1>تحدّي <span>البجروت</span> في المتتاليات</h1>
+        <p>
+          صفحة تفاعلية مخصصة لأسئلة طويلة بمستوى أقرب إلى صياغة البجروت:
+          بارامتر، استقراء رياضي، متواليات هندسية، وتفكير تحليلي.
+          الطالب يحل بنفسه أولًا، ثم يرى الإجابات النهائية في الأسفل.
+        </p>
 
-<!-- 1 -->
-<article class="question-card">
-<h3>سؤال 1</h3>
-<p>
-معطى أن:
-\[
-8+24+48+\cdots+n(n+2)
-=
-\frac{n(n+a)(n+4)}{6}
-\]
+        <div class="hero-actions center-actions">
+          <a href="#questions" class="primary-btn">ابدأ الحل</a>
+          <a href="#answers" class="secondary-btn">الإجابات النهائية</a>
+        </div>
 
-(أ) أوجد قيمة \(a\) بحيث يتحقق التساوي عند \(n=2\)
+        <div class="stats">
+          <div class="stat-card">
+            <strong>12</strong>
+            <span>سؤالًا متقدمًا</span>
+          </div>
+          <div class="stat-card">
+            <strong>2</strong>
+            <span>بندان في أغلب الأسئلة</span>
+          </div>
+          <div class="stat-card">
+            <strong>100%</strong>
+            <span>أسلوب بجروت</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-(ب) برهن بالاستقراء أن التساوي صحيح لكل \(n\) زوجي.
-</p>
-<textarea class="answer-box"></textarea>
-</article>
+  <main>
+    <section class="section glass intro-box">
+      <div class="section-head center">
+        <span class="mini-tag">تعليمات</span>
+        <h2>كيف تستخدم الصفحة؟</h2>
+        <p>
+          يُفضّل حل كل سؤال على ورقة خارجية، ثم استعمال مربعات النص لتسجيل الفكرة أو النتيجة.
+          في نهاية الصفحة يوجد زر لإظهار الإجابات النهائية بشكل مختصر.
+        </p>
+      </div>
+    </section>
 
-<!-- 2 -->
-<article class="question-card">
-<h3>سؤال 2</h3>
-<p>
-معطى:
-\[
-1^2+2^2+3^2+\cdots+n^2
-=
-\frac{n(n+1)(2n+a)}{6}
-\]
+    <section id="questions" class="section">
+      <div class="section-head center">
+        <span class="mini-tag">الأسئلة</span>
+        <h2>12 سؤالًا بمستوى أعلى</h2>
+        <p>الأسئلة هنا أطول وأقرب إلى صياغة أسئلة البجروت الحقيقية.</p>
+      </div>
 
-(أ) أوجد \(a\)
+      <div class="questions-grid">
 
-(ب) برهن صحة المتساوية لكل \(n\in\mathbb{N}\)
-</p>
-<textarea class="answer-box"></textarea>
-</article>
+        <article class="question-card">
+          <div class="q-number">01</div>
+          <h3>سؤال بارامتر لعدد زوجي</h3>
+          <p>
+            معطى أن:
+            \[
+            12+32+60+\cdots+n(n+4)=\frac{n(n+a)(n+7)}{6}
+            \]
+            حيث \(a\) هو بارامتر، وأن هذه المساواة تتحقق بالنسبة لـ \(n=2\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>بالنسبة لقيمة \(a\) التي وجدتموها، برهنوا بالاستقراء الرياضي أو بأية طريقة أخرى أن المعطى صحيح لكل \(n\) طبيعي زوجي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-<!-- 3 -->
-<article class="question-card">
-<h3>سؤال 3</h3>
-<p>
-متوالية هندسية:
-\[
-a_1=x,\quad r=2
-\]
+        <article class="question-card">
+          <div class="q-number">02</div>
+          <h3>سؤال بارامتر لعدد فردي</h3>
+          <p>
+            معطى أن:
+            \[
+            2+12+30+\cdots+n(n+1)=\frac{(n+1)(n+a)(2n+1)}{12}
+            \]
+            حيث \(a\) هو بارامتر، وأن المساواة تتحقق بالنسبة لـ \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>بالنسبة لقيمة \(a\) التي وجدتموها، برهنوا أن المعطى صحيح لكل \(n\) طبيعي فردي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-إذا كان:
-\[
-S_n = x(2^n-1)=126
-\]
+        <article class="question-card">
+          <div class="q-number">03</div>
+          <h3>جمع حدود زوجية مع بارامتر</h3>
+          <p>
+            معطى أن:
+            \[
+            6+20+42+\cdots+n(n+1)=\frac{n(n+2)(2n+a)}{12}
+            \]
+            حيث \(a\) بارامتر، وأن المساواة تتحقق عندما \(n=2\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المساواة صحيحة لكل \(n\) طبيعي زوجي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-(أ) أوجد \(x\)
+        <article class="question-card">
+          <div class="q-number">04</div>
+          <h3>سؤال شبيه بالبجروت مع كثير حدود</h3>
+          <p>
+            معطى أن:
+            \[
+            3+15+35+\cdots+n(n+2)=\frac{(n+1)(n^2+an+3)}{6}
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق بالنسبة لـ \(n=1\)، حيث \(n\) فردي.
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المساواة تتحقق لكل \(n\) طبيعي فردي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-(ب) أوجد \(n\)
-</p>
-<input class="answer-box">
-</article>
+        <article class="question-card">
+          <div class="q-number">05</div>
+          <h3>مجموع مكعبات</h3>
+          <p>
+            معطى أن:
+            \[
+            1^3+2^3+3^3+\cdots+n^3=\frac{n^2(n+a)^2}{4}
+            \]
+            حيث \(a\) بارامتر، وأن المساواة تتحقق عندما \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-<!-- 4 -->
-<article class="question-card">
-<h3>سؤال 4</h3>
-<p>
-متوالية هندسية لا نهائية:
-\[
-4+4x+4x^2+\cdots=8
-\]
+        <article class="question-card">
+          <div class="q-number">06</div>
+          <h3>مجموع مربعات زوجية</h3>
+          <p>
+            معطى أن:
+            \[
+            2^2+4^2+6^2+\cdots+n^2=\frac{n(n+a)(n+2)}{6}
+            \]
+            حيث \(a\) بارامتر، وأن المساواة تتحقق بالنسبة لـ \(n=2\)، حيث \(n\) زوجي.
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المساواة صحيحة لكل \(n\) طبيعي زوجي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-(أ) أوجد \(x\)
+        <article class="question-card">
+          <div class="q-number">07</div>
+          <h3>مجموع مربعات فردية</h3>
+          <p>
+            معطى أن:
+            \[
+            1^2+3^2+5^2+\cdots+n^2=\frac{n(n+1)(n+a)}{6}
+            \]
+            حيث \(a\) بارامتر، وأن المساواة تتحقق عندما \(n=1\)، حيث \(n\) فردي.
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي فردي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-(ب) تحقق من شرط التقارب
-</p>
-<input class="answer-box">
-</article>
+        <article class="question-card">
+          <div class="q-number">08</div>
+          <h3>سؤال استقراء بصيغة مضروبة</h3>
+          <p>
+            معطى أن:
+            \[
+            1\cdot3+2\cdot5+3\cdot7+\cdots+n(2n+1)=\frac{n(n+1)(4n+a)}{6}
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق بالنسبة لـ \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المساواة صحيحة لكل \(n\) طبيعي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-<!-- 5 -->
-<article class="question-card">
-<h3>سؤال 5</h3>
-<p>
-في متوالية هندسية:
-\[
-a_2=6,\quad a_5=162
-\]
+        <article class="question-card">
+          <div class="q-number">09</div>
+          <h3>صيغة جمع مع استنتاج لاحق</h3>
+          <p>
+            معطى أن:
+            \[
+            1\cdot2+2\cdot3+3\cdot4+\cdots+n(n+1)=\frac{n(n+1)(n+a)}{3}
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق بالنسبة لـ \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي، واستنتجوا أن حاصل ضرب ثلاثة أعداد طبيعية متتالية يقبل القسمة على \(3\).</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-(أ) أوجد \(r\)
+        <article class="question-card">
+          <div class="q-number">10</div>
+          <h3>جمع من نوع آخر</h3>
+          <p>
+            معطى أن:
+            \[
+            1\cdot2+2\cdot4+3\cdot6+\cdots+n(2n)=\frac{n(n+1)(2n+a)}{3}
+            \]
+            حيث \(a\) بارامتر، وأن المساواة تتحقق عندما \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>برهنوا أن المساواة صحيحة لكل \(n\) طبيعي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-(ب) أوجد \(a_1\)
-</p>
-<input class="answer-box">
-</article>
+        <article class="question-card">
+          <div class="q-number">11</div>
+          <h3>سؤال بدرجة أصعب قليلًا</h3>
+          <p>
+            معطى أن:
+            \[
+            1\cdot2\cdot3+2\cdot3\cdot4+3\cdot4\cdot5+\cdots+n(n+1)(n+2)
+            =
+            \frac{n(n+1)(n+2)(n+a)}{4}
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق بالنسبة لـ \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-<!-- 6 -->
-<article class="question-card">
-<h3>سؤال 6</h3>
-<p>
-معطى:
-\[
-2+4+8+\cdots+2^n=126
-\]
+        <article class="question-card">
+          <div class="q-number">12</div>
+          <h3>سؤال متوالية هندسية مع بارامتر</h3>
+          <p>
+            معطى أن:
+            \[
+            4+12+36+\cdots+4\cdot3^{n-1}=a(3^n-1)
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق بالنسبة لـ \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي.</li>
+          </ol>
+          <textarea class="answer-box" placeholder="اكتب محاولتك هنا"></textarea>
+        </article>
 
-(أ) أوجد \(n\)
+      </div>
 
-(ب) برهن أن:
-\[
-S_n=2(2^n-1)
-\]
-</p>
-<textarea class="answer-box"></textarea>
-</article>
+      <div class="answers-trigger">
+        <button class="toggle-btn big-btn" onclick="showAllSolutions()">إظهار الإجابات النهائية</button>
+        <p class="final-note">
+          تم إخفاء الإجابات حتى يحاول الطالب أولًا بنفسه.
+        </p>
+      </div>
 
-<!-- 7 -->
-<article class="question-card">
-<h3>سؤال 7</h3>
-<p>
-متوالية هندسية:
-\[
-a_1+a_2+a_3=21,\quad a_2=6
-\]
+      <div id="answers" class="final-solutions glass">
+        <div class="section-head center">
+          <span class="mini-tag">الإجابات النهائية</span>
+          <h2>الإجابات المختصرة</h2>
+        </div>
 
-(أ) أوجد \(r\)
+        <p><strong>1)</strong> \(a=2\)</p>
+        <p><strong>2)</strong> \(a=3\)</p>
+        <p><strong>3)</strong> \(a=5\)</p>
+        <p><strong>4)</strong> \(a=5\)</p>
+        <p><strong>5)</strong> \(a=1\)</p>
+        <p><strong>6)</strong> \(a=1\)</p>
+        <p><strong>7)</strong> \(a=2\)</p>
+        <p><strong>8)</strong> \(a=5\)</p>
+        <p><strong>9)</strong> \(a=2\)</p>
+        <p><strong>10)</strong> \(a=1\)</p>
+        <p><strong>11)</strong> \(a=3\)</p>
+        <p><strong>12)</strong> \(a=2\)</p>
+      </div>
+    </section>
+  </main>
 
-(ب) أوجد \(a_1\)
-</p>
-<input class="answer-box">
-</article>
+  <footer class="footer">
+    <p>تم إعداد هذه النسخة بخلفية سبورة رياضية وبأسئلة بصياغة أقرب إلى البجروت.</p>
+  </footer>
 
-<!-- 8 -->
-<article class="question-card">
-<h3>سؤال 8</h3>
-<p>
-برهن بالاستقراء:
-\[
-1+3+5+\cdots+(2n-1)=n^2
-\]
-
-ثم استنتج:
-\[
-2+4+6+\cdots+2n=n(n+1)
-\]
-</p>
-<textarea class="answer-box"></textarea>
-</article>
-
-<!-- 9 -->
-<article class="question-card">
-<h3>سؤال 9</h3>
-<p>
-متوالية هندسية:
-\[
-a_1=8,\quad r=\frac{1}{2}
-\]
-
-(أ) أوجد \(S_\infty\)
-
-(ب) كم حدًا نحتاج حتى يكون المجموع أكبر من 15؟
-</p>
-<input class="answer-box">
-</article>
-
-<!-- 10 -->
-<article class="question-card">
-<h3>سؤال 10</h3>
-<p>
-معطى:
-\[
-1+2+4+\cdots+2^n=2^{n+1}-1
-\]
-
-(أ) برهن بالاستقراء
-
-(ب) أوجد مجموع:
-\[
-2+4+8+\cdots+2^{10}
-\]
-</p>
-<textarea class="answer-box"></textarea>
-</article>
-
-<!-- 11 -->
-<article class="question-card">
-<h3>سؤال 11</h3>
-<p>
-متوالية هندسية:
-\[
-a_1=1,\quad r=2
-\]
-
-(أ) أوجد \(S_6\)
-
-(ب) أوجد \(S_n\)
-</p>
-<input class="answer-box">
-</article>
-
-<!-- 12 -->
-<article class="question-card">
-<h3>سؤال 12</h3>
-<p>
-معطى:
-\[
-3+3x+3x^2+\cdots=6
-\]
-
-(أ) أوجد \(x\)
-
-(ب) أوجد مجموع أول 5 حدود
-</p>
-<input class="answer-box">
-</article>
-
-</div>
-
-<!-- زر الحل -->
-<div style="text-align:center; margin-top:40px;">
-<button onclick="showSolutions()">إظهار الحلول</button>
-</div>
-
-<!-- الحلول -->
-<div id="solutions" style="display:none; margin-top:30px;">
-<h2>الحلول</h2>
-
-<p>1) a = 2</p>
-<p>2) a = 1</p>
-<p>3) x=2 , n=6</p>
-<p>4) x=1/2</p>
-<p>5) r=3 , a1=2</p>
-<p>6) n=6</p>
-<p>7) r=2 , a1=3</p>
-<p>9) 16</p>
-<p>11) 63</p>
-<p>12) x=1/2</p>
-
-</div>
-
-<script>
-function showSolutions(){
-  const s = document.getElementById("solutions");
-  s.style.display = (s.style.display === "none") ? "block" : "none";
-}
-</script>
-
+  <script src="script.js"></script>
+  <script>
+    function showAllSolutions() {
+      const box = document.getElementById("answers");
+      if (box.style.display === "none" || box.style.display === "") {
+        box.style.display = "block";
+        box.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        box.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
