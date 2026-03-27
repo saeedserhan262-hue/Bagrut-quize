@@ -18,6 +18,121 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+  <style>
+    .part-label{
+      display:block;
+      margin-top:14px;
+      margin-bottom:6px;
+      font-weight:700;
+      color:#f3fff8;
+    }
+
+    .feedback{
+      margin-top:8px;
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:700;
+      display:none;
+    }
+
+    .feedback.correct{
+      display:block;
+      background:rgba(76, 175, 80, 0.18);
+      border:1px solid rgba(76, 175, 80, 0.45);
+      color:#caffd0;
+    }
+
+    .feedback.wrong{
+      display:block;
+      background:rgba(244, 67, 54, 0.18);
+      border:1px solid rgba(244, 67, 54, 0.45);
+      color:#ffd0d0;
+    }
+
+    .question-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .check-btn,
+    .solve-btn{
+      border:none;
+      cursor:pointer;
+      padding:12px 18px;
+      border-radius:14px;
+      font-family:inherit;
+      font-weight:800;
+      transition:.25s ease;
+    }
+
+    .check-btn{
+      color:white;
+      background:linear-gradient(135deg,#22c55e,#16a34a);
+      box-shadow:0 0 18px rgba(34,197,94,0.28);
+    }
+
+    .solve-btn{
+      color:white;
+      background:linear-gradient(135deg,#8b5cf6,#22d3ee);
+      box-shadow:0 0 18px rgba(139,92,246,0.22);
+    }
+
+    .check-btn:hover,
+    .solve-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .solution-box{
+      display:none;
+      margin-top:18px;
+      padding:18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.16);
+      line-height:2;
+    }
+
+    .solution-box.show{
+      display:block;
+    }
+
+    .solution-box h4{
+      margin:0 0 10px;
+      color:#ffffff;
+    }
+
+    .solution-box p{
+      margin:10px 0;
+    }
+
+    .solution-box ul{
+      margin:10px 0;
+      padding-right:22px;
+    }
+
+    .solution-box li{
+      margin-bottom:6px;
+    }
+
+    .mini-answer{
+      color:#dff9e8;
+      font-weight:700;
+    }
+
+    .notice-box{
+      max-width:1200px;
+      margin:20px auto 0;
+      padding:18px 22px;
+      border-radius:22px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.14);
+      color:#eefcf3;
+      line-height:1.9;
+    }
+  </style>
 </head>
 <body class="chalk-theme">
 
@@ -39,7 +154,7 @@
         <p>
           صفحة تفاعلية مخصصة لأسئلة طويلة بمستوى أقرب إلى صياغة البجروت:
           بارامتر، استقراء رياضي، متواليات هندسية، وتفكير تحليلي.
-          الطالب يحل بنفسه أولًا، ثم يرى الإجابات النهائية في الأسفل.
+          الطالب يحل بنفسه أولًا، ثم يتحقق من إجابته، وإذا احتاج يرى طريقة الحل بالتفصيل.
         </p>
 
         <div class="hero-actions center-actions">
@@ -65,6 +180,12 @@
     </div>
   </header>
 
+  <div class="notice-box">
+    <strong>ملاحظة:</strong>
+    فحص الموقع التلقائي دقيق في البند (أ) لأنه غالبًا قيمة أو بارامتر نهائي.  
+    أمّا البند (ب) فهو برهان أو تفسير كتابي، لذلك إذا كان الصندوق فارغًا يظهر أنه غير مكتمل، وإذا كتب الطالب فيه شيئًا فالأفضل أن يقارنه مع <strong>طريقة الحل</strong> التي تظهر بالتفصيل.
+  </div>
+
   <main>
     <section class="section glass intro-box">
       <div class="section-head center">
@@ -81,12 +202,12 @@
       <div class="section-head center">
         <span class="mini-tag">الأسئلة</span>
         <h2>12 سؤالًا بمستوى أعلى</h2>
-        <p>الأسئلة نفسها كما هي، لكن الآن لكل بند خانة مستقلة وواضحة.</p>
+        <p>الأسئلة نفسها كما هي، مع إضافة التحقق وطريقة الحل.</p>
       </div>
 
       <div class="questions-grid">
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="2">
           <div class="q-number">01</div>
           <h3>سؤال بارامتر لعدد زوجي</h3>
           <p>
@@ -100,13 +221,45 @@
             <li>جدوا قيمة \(a\).</li>
             <li>بالنسبة لقيمة \(a\) التي وجدتموها، برهنوا بالاستقراء الرياضي أو بأية طريقة أخرى أن المعطى صحيح لكل \(n\) طبيعي زوجي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol1')">طريقة الحل</button>
+          </div>
+
+          <div id="sol1" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              نعوّض \(n=2\):
+              \[
+              12=\frac{2(2+a)(9)}{6}=3(2+a)
+              \]
+              إذًا:
+              \[
+              12=3(2+a)\Rightarrow 4=2+a \Rightarrow a=2
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نثبت أولًا صحة العلاقة للحالة الأولى الزوجية \(n=2\).</li>
+              <li>نفرض أن العلاقة صحيحة عند \(n=k\) حيث \(k\) زوجي.</li>
+              <li>نضيف الحد التالي المناسب وهو \((k+2)(k+6)\).</li>
+              <li>نبسط الطرفين ونصل إلى الصيغة نفسها عند \(n=k+2\).</li>
+              <li>إذن العلاقة صحيحة لكل \(n\) زوجي.</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="3">
           <div class="q-number">02</div>
           <h3>سؤال بارامتر لعدد فردي</h3>
           <p>
@@ -120,13 +273,45 @@
             <li>جدوا قيمة \(a\).</li>
             <li>بالنسبة لقيمة \(a\) التي وجدتموها، برهنوا أن المعطى صحيح لكل \(n\) طبيعي فردي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol2')">طريقة الحل</button>
+          </div>
+
+          <div id="sol2" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              نعوّض \(n=1\):
+              \[
+              2=\frac{(2)(1+a)(3)}{12}=\frac{1+a}{2}
+              \]
+              إذًا:
+              \[
+              2=\frac{1+a}{2}\Rightarrow 4=1+a \Rightarrow a=3
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نبدأ بالحالة الأولى \(n=1\).</li>
+              <li>نفترض صحة العلاقة عند \(n=k\) حيث \(k\) فردي.</li>
+              <li>نضيف الحد التالي الموافق للانتقال من عدد فردي إلى العدد الفردي التالي \(k+2\).</li>
+              <li>نبسط ونصل إلى الصيغة المطلوبة عند \(n=k+2\).</li>
+              <li>وبذلك تثبت العلاقة لكل \(n\) فردي.</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="5">
           <div class="q-number">03</div>
           <h3>جمع حدود زوجية مع بارامتر</h3>
           <p>
@@ -140,13 +325,45 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المساواة صحيحة لكل \(n\) طبيعي زوجي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol3')">طريقة الحل</button>
+          </div>
+
+          <div id="sol3" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=2\):
+              \[
+              6=\frac{2(4)(4+a)}{12}=\frac{2(4+a)}{3}
+              \]
+              إذًا:
+              \[
+              18=2(4+a)\Rightarrow 9=4+a \Rightarrow a=5
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نثبت صحة العلاقة عند \(n=2\).</li>
+              <li>نفترض صحتها عند \(n=k\) حيث \(k\) زوجي.</li>
+              <li>نضيف الحد التالي: \((k+2)(k+3)\).</li>
+              <li>نبسط الطرف الأيسر ونقارن مع الطرف الأيمن عند \(k+2\).</li>
+              <li>نحصل على الصيغة نفسها، إذن العلاقة صحيحة لكل \(n\) زوجي.</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="5">
           <div class="q-number">04</div>
           <h3>سؤال شبيه بالبجروت مع كثير حدود</h3>
           <p>
@@ -160,13 +377,45 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المساواة تتحقق لكل \(n\) طبيعي فردي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol4')">طريقة الحل</button>
+          </div>
+
+          <div id="sol4" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              3=\frac{2(1+a+3)}{6}=\frac{a+4}{3}
+              \]
+              إذًا:
+              \[
+              9=a+4 \Rightarrow a=5
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نتحقق من الحالة الأولى \(n=1\).</li>
+              <li>نفترض صحة العلاقة عند \(n=k\) حيث \(k\) فردي.</li>
+              <li>نضيف الحد التالي الملائم للعدد الفردي التالي.</li>
+              <li>بعد التبسيط نحصل على التعبير نفسه عند \(n=k+2\).</li>
+              <li>إذن العلاقة صحيحة لكل \(n\) فردي.</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="1">
           <div class="q-number">05</div>
           <h3>مجموع مكعبات</h3>
           <p>
@@ -180,13 +429,56 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol5')">طريقة الحل</button>
+          </div>
+
+          <div id="sol5" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              1=\frac{1^2(1+a)^2}{4}
+              \Rightarrow 4=(1+a)^2
+              \]
+              نأخذ القيمة المناسبة الموجبة:
+              \[
+              1+a=2 \Rightarrow a=1
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              تصبح الصيغة:
+              \[
+              1^3+2^3+\cdots+n^3=\frac{n^2(n+1)^2}{4}
+              \]
+            </p>
+            <ul>
+              <li>نثبتها أولًا عند \(n=1\).</li>
+              <li>نفترض صحتها عند \(n=k\).</li>
+              <li>نضيف \((k+1)^3\) للطرفين.</li>
+              <li>بعد التبسيط نحصل على:
+                \[
+                \frac{(k+1)^2(k+2)^2}{4}
+                \]
+              </li>
+              <li>إذن العلاقة صحيحة لكل \(n\).</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="1">
           <div class="q-number">06</div>
           <h3>مجموع مربعات زوجية</h3>
           <p>
@@ -200,13 +492,51 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المساواة صحيحة لكل \(n\) طبيعي زوجي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol6')">طريقة الحل</button>
+          </div>
+
+          <div id="sol6" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=2\):
+              \[
+              4=\frac{2(2+a)(4)}{6}=\frac{4(2+a)}{3}
+              \]
+              إذًا:
+              \[
+              12=4(2+a)\Rightarrow 3=2+a \Rightarrow a=1
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              تصبح الصيغة:
+              \[
+              2^2+4^2+\cdots+n^2=\frac{n(n+1)(n+2)}{6}
+              \]
+              لكل \(n\) زوجي.
+            </p>
+            <ul>
+              <li>نفرض صحتها عند \(n=k\).</li>
+              <li>نضيف الحد التالي \((k+2)^2\).</li>
+              <li>نحوّل التعبير إلى صورة العامل المشترك.</li>
+              <li>نصل إلى الصيغة نفسها عند \(k+2\).</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="2">
           <div class="q-number">07</div>
           <h3>مجموع مربعات فردية</h3>
           <p>
@@ -220,13 +550,51 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي فردي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol7')">طريقة الحل</button>
+          </div>
+
+          <div id="sol7" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              1=\frac{1\cdot2\cdot(1+a)}{6}=\frac{1+a}{3}
+              \]
+              إذًا:
+              \[
+              1+a=3 \Rightarrow a=2
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              تصبح:
+              \[
+              1^2+3^2+\cdots+n^2=\frac{n(n+1)(n+2)}{6}
+              \]
+              لكل \(n\) فردي.
+            </p>
+            <ul>
+              <li>نثبت الحالة الأولى.</li>
+              <li>نفترض الصحة عند \(n=k\) حيث \(k\) فردي.</li>
+              <li>نضيف الحد التالي \((k+2)^2\).</li>
+              <li>نبسط لنصل إلى الصيغة عند \(k+2\).</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="5">
           <div class="q-number">08</div>
           <h3>سؤال استقراء بصيغة مضروبة</h3>
           <p>
@@ -240,13 +608,55 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المساواة صحيحة لكل \(n\) طبيعي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol8')">طريقة الحل</button>
+          </div>
+
+          <div id="sol8" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              3=\frac{1\cdot2\cdot(4+a)}{6}=\frac{4+a}{3}
+              \]
+              إذًا:
+              \[
+              9=4+a \Rightarrow a=5
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              تصبح الصيغة:
+              \[
+              1\cdot3+2\cdot5+\cdots+n(2n+1)=\frac{n(n+1)(4n+5)}{6}
+              \]
+            </p>
+            <ul>
+              <li>نفرض صحة العلاقة عند \(n=k\).</li>
+              <li>نضيف الحد \((k+1)(2k+3)\).</li>
+              <li>نأخذ عاملًا مشتركًا ونرتب الحدود.</li>
+              <li>نحصل على:
+                \[
+                \frac{(k+1)(k+2)(4k+9)}{6}
+                \]
+                وهي الصيغة المطلوبة عند \(k+1\).
+              </li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="2">
           <div class="q-number">09</div>
           <h3>صيغة جمع مع استنتاج لاحق</h3>
           <p>
@@ -260,13 +670,55 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي، واستنتجوا أن حاصل ضرب ثلاثة أعداد طبيعية متتالية يقبل القسمة على \(3\).</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol9')">طريقة الحل</button>
+          </div>
+
+          <div id="sol9" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              2=\frac{1\cdot2\cdot(1+a)}{3}=\frac{2(1+a)}{3}
+              \]
+              إذًا:
+              \[
+              6=2(1+a)\Rightarrow 3=1+a \Rightarrow a=2
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              الصيغة تصبح:
+              \[
+              1\cdot2+2\cdot3+\cdots+n(n+1)=\frac{n(n+1)(n+2)}{3}
+              \]
+            </p>
+            <ul>
+              <li>نثبتها بالاستقراء العادي على \(n\).</li>
+              <li>بعد إثبات الصيغة، نلاحظ أن:
+                \[
+                n,\; n+1,\; n+2
+                \]
+                هي ثلاثة أعداد متتالية.
+              </li>
+              <li>وكل ثلاثة أعداد متتالية يوجد بينها عدد يقبل القسمة على \(3\).</li>
+              <li>إذن حاصل ضربها يقبل القسمة على \(3\).</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="1">
           <div class="q-number">10</div>
           <h3>جمع من نوع آخر</h3>
           <p>
@@ -280,13 +732,54 @@
             <li>جدوا قيمة \(a\).</li>
             <li>برهنوا أن المساواة صحيحة لكل \(n\) طبيعي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol10')">طريقة الحل</button>
+          </div>
+
+          <div id="sol10" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              2=\frac{1\cdot2\cdot(2+a)}{3}
+              \]
+              إذًا:
+              \[
+              6=2(2+a)\Rightarrow 3=2+a \Rightarrow a=1
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              تصبح:
+              \[
+              1\cdot2+2\cdot4+\cdots+n(2n)=\frac{n(n+1)(2n+1)}{3}
+              \]
+            </p>
+            <ul>
+              <li>نفرض الصحة عند \(n=k\).</li>
+              <li>نضيف الحد التالي:
+                \[
+                (k+1)\cdot 2(k+1)=2(k+1)^2
+                \]
+              </li>
+              <li>نبسط ونستخرج \((k+1)(k+2)\).</li>
+              <li>نحصل على الصيغة المطلوبة عند \(k+1\).</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="3">
           <div class="q-number">11</div>
           <h3>سؤال بدرجة أصعب قليلًا</h3>
           <p>
@@ -302,13 +795,59 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol11')">طريقة الحل</button>
+          </div>
+
+          <div id="sol11" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              6=\frac{1\cdot2\cdot3\cdot(1+a)}{4}=\frac{6(1+a)}{4}
+              \]
+              إذًا:
+              \[
+              24=6(1+a)\Rightarrow 4=1+a \Rightarrow a=3
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              الصيغة تصبح:
+              \[
+              \sum_{r=1}^{n} r(r+1)(r+2)=\frac{n(n+1)(n+2)(n+3)}{4}
+              \]
+            </p>
+            <ul>
+              <li>نفرض صحتها عند \(n=k\).</li>
+              <li>نضيف الحد التالي:
+                \[
+                (k+1)(k+2)(k+3)
+                \]
+              </li>
+              <li>نأخذ \((k+1)(k+2)(k+3)\) عاملًا مشتركًا.</li>
+              <li>نحصل على:
+                \[
+                \frac{(k+1)(k+2)(k+3)(k+4)}{4}
+                \]
+              </li>
+              <li>وهذا هو المطلوب عند \(k+1\).</li>
+            </ul>
+          </div>
         </article>
 
-        <article class="question-card">
+        <article class="question-card" data-correct-a="2">
           <div class="q-number">12</div>
           <h3>سؤال متوالية هندسية مع بارامتر</h3>
           <p>
@@ -322,10 +861,56 @@
             <li>جدوا قيمة \(a\).</li>
             <li>أثبتوا أن المعطى صحيح لكل \(n\) طبيعي.</li>
           </ol>
+
           <label class="part-label">(أ) الإجابة:</label>
-          <input class="answer-box" placeholder="اكتب إجابة البند (أ)">
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
           <label class="part-label">(ب) الإجابة:</label>
-          <textarea class="answer-box" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol12')">طريقة الحل</button>
+          </div>
+
+          <div id="sol12" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              4=a(3-1)=2a
+              \Rightarrow a=2
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              هذه متوالية هندسية حدها الأول:
+              \[
+              a_1=4
+              \]
+              وأساسها:
+              \[
+              r=3
+              \]
+            </p>
+            <p>
+              مجموع أول \(n\) حدود:
+              \[
+              S_n=\frac{4(3^n-1)}{3-1}=2(3^n-1)
+              \]
+              أي أن:
+              \[
+              a(3^n-1)=2(3^n-1)
+              \]
+              ومنه:
+              \[
+              a=2
+              \]
+            </p>
+          </div>
         </article>
 
       </div>
@@ -365,13 +950,53 @@
 
   <script src="script.js"></script>
   <script>
-    function showAllSolutions() {
-      const box = document.getElementById("answers");
-      if (box.style.display === "none" || box.style.display === "") {
-        box.style.display = "block";
-        box.scrollIntoView({ behavior: "smooth", block: "start" });
+    function normalizeValue(value) {
+      return value
+        .trim()
+        .replace(/\s+/g, '')
+        .replace(/,/g, '.');
+    }
+
+    function checkQuestion(button) {
+      const card = button.closest('.question-card');
+      const correctA = normalizeValue(card.dataset.correctA || '');
+      const inputA = card.querySelector('.answer-a');
+      const inputB = card.querySelector('.answer-b');
+      const feedbackA = card.querySelector('.feedback-a');
+      const feedbackB = card.querySelector('.feedback-b');
+
+      const userA = normalizeValue(inputA.value);
+      const userB = inputB.value.trim();
+
+      if (userA === correctA) {
+        feedbackA.textContent = '✔ إجابة صحيحة';
+        feedbackA.className = 'feedback feedback-a correct';
       } else {
-        box.style.display = "none";
+        feedbackA.textContent = '✘ إجابة خاطئة';
+        feedbackA.className = 'feedback feedback-a wrong';
+      }
+
+      if (userB.length < 8) {
+        feedbackB.textContent = '✘ إجابة خاطئة أو غير مكتملة';
+        feedbackB.className = 'feedback feedback-b wrong';
+      } else {
+        feedbackB.textContent = '✔ تمت كتابة إجابة. قارنيها الآن مع طريقة الحل.';
+        feedbackB.className = 'feedback feedback-b correct';
+      }
+    }
+
+    function toggleSolution(id) {
+      const box = document.getElementById(id);
+      box.classList.toggle('show');
+    }
+
+    function showAllSolutions() {
+      const box = document.getElementById('answers');
+      if (box.style.display === 'none' || box.style.display === '') {
+        box.style.display = 'block';
+        box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        box.style.display = 'none';
       }
     }
   </script>
