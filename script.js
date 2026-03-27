@@ -105,3 +105,7 @@ function animate() {
 }
 
 animate();
+function showAllSolutions(){
+  const s = document.getElementById("solutions");
+  s.style.display = (s.style.display === "none") ? "block" : "none";
+}
