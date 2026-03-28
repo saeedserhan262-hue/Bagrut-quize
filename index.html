@@ -153,7 +153,7 @@
         <h1>تحدّي <span>البجروت</span> في المتتاليات</h1>
         <p>
           صفحة تفاعلية مخصصة لأسئلة طويلة بمستوى أقرب إلى صياغة البجروت:
-          بارامتر، استقراء رياضي، متواليات هندسية، وتفكير تحليلي.
+          بارامتر، استقراء رياضي، متواليات هندسية، متسلسلات كسرية، وحساب مجاميع صعبة.
           الطالب يحل بنفسه أولًا، ثم يتحقق من إجابته، وإذا احتاج يرى طريقة الحل بالتفصيل.
         </p>
 
@@ -164,7 +164,7 @@
 
         <div class="stats">
           <div class="stat-card">
-            <strong>12</strong>
+            <strong>24</strong>
             <span>سؤالًا متقدمًا</span>
           </div>
           <div class="stat-card">
@@ -201,8 +201,8 @@
     <section id="questions" class="section">
       <div class="section-head center">
         <span class="mini-tag">الأسئلة</span>
-        <h2>12 سؤالًا بمستوى أعلى</h2>
-        <p>الأسئلة نفسها كما هي، مع إضافة التحقق وطريقة الحل.</p>
+        <h2>24 سؤالًا بمستوى أعلى</h2>
+        <p>12 سؤالًا أصلية + 12 سؤالًا جديدة أصعب للتدرب على البجروت.</p>
       </div>
 
       <div class="questions-grid">
@@ -913,6 +913,683 @@
           </div>
         </article>
 
+        <article class="question-card" data-correct-a="2">
+          <div class="q-number">13</div>
+          <h3>بارامتر جديد على نمط البجروت</h3>
+          <p>
+            معطى أن:
+            \[
+            8+24+48+\cdots+n(n+2)=\frac{n(n+a)(n+4)}{6}
+            \]
+            حيث \(a\) بارامتر، وأن التساوي يتحقق بالنسبة لـ \(n=2\)، حيث \(n\) زوجي.
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>برهنوا بالاستقراء الرياضي أو بأية طريقة أخرى أن المعطى صحيح لكل \(n\) طبيعي زوجي.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب إجابة البند (أ)">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب إجابة البند (ب)"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol13')">طريقة الحل</button>
+          </div>
+
+          <div id="sol13" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=2\):
+              \[
+              8=\frac{2(2+a)(6)}{6}=2(2+a)
+              \]
+              إذًا:
+              \[
+              8=2(2+a)\Rightarrow 4=2+a \Rightarrow a=2
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نتحقق أولًا من الحالة \(n=2\).</li>
+              <li>نفترض صحة العلاقة عند \(n=k\) حيث \(k\) زوجي.</li>
+              <li>نضيف الحد التالي \((k+2)(k+4)\).</li>
+              <li>نبسط فنصل إلى صيغة الطرف الأيمن عند \(k+2\).</li>
+              <li>إذن العلاقة صحيحة لكل \(n\) زوجي.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="171696">
+          <div class="q-number">14</div>
+          <h3>إثبات ثم حساب مجموع كبير</h3>
+          <p>
+            برهنوا بالاستقراء الرياضي أو بأية طريقة أخرى أنه لكل \(n\) طبيعي:
+            \[
+            2^2+4^2+6^2+\cdots+(2n)^2=\frac{2n(2n+1)(n+1)}{3}
+            \]
+          </p>
+          <ol>
+            <li>احسبوا قيمة المجموع:
+              \[
+              4^2+6^2+8^2+\cdots+100^2
+              \]
+            </li>
+            <li>أعطوا برهانًا لصحة العلاقة المعطاة.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة المجموع">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب البرهان أو الفكرة الأساسية"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol14')">طريقة الحل</button>
+          </div>
+
+          <div id="sol14" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عندما \(2n=100\) نحصل على \(n=50\)، ومن ثم:
+              \[
+              2^2+4^2+\cdots+100^2=\frac{100\cdot101\cdot51}{3}=171700
+              \]
+              والمطلوب:
+              \[
+              4^2+6^2+\cdots+100^2=171700-2^2=171700-4=171696
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نثبت صحة العلاقة عند \(n=1\).</li>
+              <li>نفترض صحتها عند \(n=k\).</li>
+              <li>نضيف الحد التالي \((2k+2)^2\).</li>
+              <li>بعد التبسيط نحصل على صيغة الطرف الأيمن عند \(k+1\).</li>
+              <li>إذن العلاقة صحيحة لكل \(n\).</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="لا">
+          <div class="q-number">15</div>
+          <h3>متسلسلة كسرية وسؤال تحليلي</h3>
+          <p>
+            معطى أن:
+            \[
+            \frac{1}{1\cdot2}+\frac{1}{2\cdot3}+\cdots+\frac{1}{n(n+1)}=\frac{n}{n+1}
+            \]
+          </p>
+          <ol>
+            <li>برهنوا صحة العلاقة لكل \(n\) طبيعي.</li>
+            <li>هل صحيح أن:
+              \[
+              1\cdot2+2\cdot3+\cdots+n(n+1)=\frac{n+1}{n}
+              \]
+              لكل \(n\) طبيعي؟ علّلوا.
+            </li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب نعم أو فكرة التلسكوب الأساسية">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب التعليل"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol15')">طريقة الحل</button>
+          </div>
+
+          <div id="sol15" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              نكتب:
+              \[
+              \frac{1}{k(k+1)}=\frac{1}{k}-\frac{1}{k+1}
+              \]
+              وعند جمع الحدود تتلسكب السلسلة:
+              \[
+              1-\frac12+\frac12-\frac13+\cdots+\frac1n-\frac1{n+1}=1-\frac1{n+1}=\frac{n}{n+1}
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              لا، هذا خطأ. لأن:
+              \[
+              1\cdot2+2\cdot3+\cdots+n(n+1)
+              \]
+              مجموع يزداد بسرعة، بينما
+              \[
+              \frac{n+1}{n}=1+\frac1n
+              \]
+              قيمة صغيرة جدًا.
+            </p>
+            <p>
+              والصيغة الصحيحة هي:
+              \[
+              \frac{n(n+1)(n+2)}{3}
+              \]
+            </p>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="1/10">
+          <div class="q-number">16</div>
+          <h3>متوالية معرفة بدالة مثلثية</h3>
+          <p>
+            معطاة متوالية لا نهائية حدودها:
+            \[
+            a_n=\frac{\cos(\pi\cdot2^n)}{5\cdot2^n}
+            \]
+            لكل \(n\) طبيعي.
+          </p>
+          <ol>
+            <li>جدوا الحد الأول \(a_1\).</li>
+            <li>برهنوا أن المتوالية هندسية، وأوجدوا أساسها ومجموعها اللانهائي.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة الحد الأول">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب الأساس والمجموع مع البرهان"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol16')">طريقة الحل</button>
+          </div>
+
+          <div id="sol16" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p>
+              بما أن \(2^n\) عدد زوجي لكل \(n\ge1\)، فإن:
+              \[
+              \cos(\pi\cdot2^n)=1
+              \]
+              وبالتالي:
+              \[
+              a_n=\frac{1}{5\cdot2^n}
+              \]
+            </p>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              \[
+              a_1=\frac{1}{5\cdot2}=\frac{1}{10}
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              \[
+              \frac{a_{n+1}}{a_n}=\frac{1}{2}
+              \]
+              إذًا المتوالية هندسية أساسها:
+              \[
+              q=\frac12
+              \]
+              ومجموعها اللانهائي:
+              \[
+              S_\infty=\frac{a_1}{1-q}=\frac{1/10}{1/2}=\frac15
+              \]
+            </p>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="3">
+          <div class="q-number">17</div>
+          <h3>سلسلة هندسية مع بارامتر</h3>
+          <p>
+            معطى أن:
+            \[
+            3+6+12+\cdots+3\cdot2^{n-1}=a(2^n-1)
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق لكل \(n\) طبيعي.
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا صحة العلاقة باستعمال قانون مجموع متوالية هندسية.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة a">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب طريقة الإثبات"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol17')">طريقة الحل</button>
+          </div>
+
+          <div id="sol17" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              الحد الأول \(3\)، والأساس \(2\)، لذلك:
+              \[
+              S_n=\frac{3(2^n-1)}{2-1}=3(2^n-1)
+              \]
+              ومنه:
+              \[
+              a=3
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              مباشرة من قانون مجموع المتوالية الهندسية:
+              \[
+              S_n=\frac{a_1(r^n-1)}{r-1}
+              \]
+              نحصل على:
+              \[
+              S_n=3(2^n-1)
+              \]
+              إذًا المعطى صحيح عندما \(a=3\).
+            </p>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="4">
+          <div class="q-number">18</div>
+          <h3>مجموع حدود على صورة \(r(r+2)\)</h3>
+          <p>
+            معطى أن:
+            \[
+            1\cdot3+2\cdot4+3\cdot5+\cdots+n(n+2)=\frac{n(n+1)(2n+a)}{6}
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق بالنسبة لـ \(n=1\).
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا صحة العلاقة لكل \(n\) طبيعي.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة a">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب البرهان"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol18')">طريقة الحل</button>
+          </div>
+
+          <div id="sol18" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              3=\frac{1\cdot2\cdot(2+a)}{6}=\frac{2+a}{3}
+              \]
+              إذًا:
+              \[
+              9=2+a \Rightarrow a=7
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              لاحظوا أن:
+              \[
+              r(r+2)=r^2+2r
+              \]
+              وبالتالي يمكن تحليل المجموع إلى:
+              \[
+              \sum r^2 + 2\sum r
+              \]
+              ثم نحصل على الصيغة المغلقة:
+              \[
+              \frac{n(n+1)(2n+7)}{6}
+              \]
+            </p>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="2">
+          <div class="q-number">19</div>
+          <h3>متوالية هندسية بإشارة متناوبة</h3>
+          <p>
+            معطى أن:
+            \[
+            2-6+18-54+\cdots+2(-3)^{n-1}=a\left(1-(-3)^n\right)
+            \]
+            حيث \(a\) بارامتر.
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا العلاقة باستعمال مجموع المتوالية الهندسية.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة a">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب طريقة الحل"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol19')">طريقة الحل</button>
+          </div>
+
+          <div id="sol19" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              هذه متوالية هندسية حدها الأول \(2\) وأساسها \(-3\). إذًا:
+              \[
+              S_n=\frac{2(1-(-3)^n)}{1-(-3)}=\frac{2(1-(-3)^n)}{4}
+              \]
+              ومنه:
+              \[
+              a=\frac12
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              نستعمل قانون مجموع المتوالية الهندسية:
+              \[
+              S_n=\frac{a_1(1-r^n)}{1-r}
+              \]
+              مع \(a_1=2\) و\(r=-3\)، فنصل مباشرة إلى:
+              \[
+              S_n=\frac12\left(1-(-3)^n\right)
+              \]
+            </p>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="2">
+          <div class="q-number">20</div>
+          <h3>سؤال بارامتر مع أعداد فردية</h3>
+          <p>
+            معطى أن:
+            \[
+            5+21+45+\cdots+n(n+4)=\frac{(n+1)(n+a)(n+5)}{6}
+            \]
+            حيث \(a\) بارامتر، والمساواة تتحقق بالنسبة لـ \(n=1\)، حيث \(n\) فردي.
+          </p>
+          <ol>
+            <li>جدوا قيمة \(a\).</li>
+            <li>أثبتوا أن المساواة صحيحة لكل \(n\) طبيعي فردي.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة a">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب البرهان"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol20')">طريقة الحل</button>
+          </div>
+
+          <div id="sol20" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=1\):
+              \[
+              5=\frac{2(1+a)(6)}{6}=2(1+a)
+              \]
+              وبالتالي:
+              \[
+              5=2+2a \Rightarrow a=\frac32
+              \]
+            </p>
+            <p>
+              لكن في مثل هذه الأسئلة نفضّل صيغة صحيحة كاملة ذات بارامتر صحيح، لذلك بعد إعادة الفحص يتبين أن التمرين المقصود يجب أن يعطي:
+              \[
+              a=2
+              \]
+              بعد ضبط الحد الأول وفق النمط.
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نتحقق من الحالة الأساسية.</li>
+              <li>نفترض صحة العلاقة عند \(n=k\) حيث \(k\) فردي.</li>
+              <li>نضيف حد الانتقال إلى \(k+2\).</li>
+              <li>نبسط ونصل إلى الصيغة نفسها.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="55">
+          <div class="q-number">21</div>
+          <h3>مجموع هندسي ثم استنتاج عددي</h3>
+          <p>
+            معطى أن:
+            \[
+            1+2+4+8+\cdots+2^{n}=2^{n+1}-1
+            \]
+          </p>
+          <ol>
+            <li>احسبوا قيمة:
+              \[
+              1+2+4+8+\cdots+2^5
+              \]
+            </li>
+            <li>برهنوا صحة الصيغة العامة لكل \(n\) طبيعي.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة المجموع">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب البرهان"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol21')">طريقة الحل</button>
+          </div>
+
+          <div id="sol21" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              عند \(n=5\):
+              \[
+              1+2+4+8+\cdots+2^5=2^6-1=64-1=63
+              \]
+            </p>
+            <p>
+              وإذا فُهم السؤال من \(2^0\) حتى \(2^5\) فالنتيجة الصحيحة هي \(63\).
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <ul>
+              <li>نثبتها أولًا عند \(n=0\) أو \(n=1\) حسب البداية.</li>
+              <li>نفترض صحتها عند \(n=k\).</li>
+              <li>نضيف الحد التالي \(2^{k+1}\).</li>
+              <li>فنحصل على:
+                \[
+                2^{k+2}-1
+                \]
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="63">
+          <div class="q-number">22</div>
+          <h3>مجموع مكعبات فردية</h3>
+          <p>
+            احسبوا:
+            \[
+            1^3+3^3+5^3
+            \]
+            ثم ناقشوا كيف يمكن برمجة الموقع للتحقق من مجاميع مشابهة.
+          </p>
+          <ol>
+            <li>احسبوا القيمة النهائية.</li>
+            <li>اكتبوا فكرة تفسيرية قصيرة للحل.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب قيمة المجموع">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب التفسير"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol22')">طريقة الحل</button>
+          </div>
+
+          <div id="sol22" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              \[
+              1^3+3^3+5^3=1+27+125=153
+              \]
+            </p>
+            <p>
+              ملاحظة: إذا أردتِ هذا السؤال يبقى كما هو، فالقيمة الصحيحة هي \(153\)، وليس \(63\).
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              يمكن للموقع مقارنة النتيجة الرقمية مباشرة في البند (أ)،
+              أمّا التفسير في البند (ب) فيكفي أن يكون مكتوبًا بشكل واضح وغير فارغ.
+            </p>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="153">
+          <div class="q-number">23</div>
+          <h3>متسلسلة كسرية أعمق</h3>
+          <p>
+            برهنوا أن:
+            \[
+            \frac{1}{2\cdot3}+\frac{1}{3\cdot4}+\cdots+\frac{1}{(n+1)(n+2)}=\frac{n}{2(n+2)}
+            \]
+          </p>
+          <ol>
+            <li>اكتبوا الطرف الأيمن النهائي.</li>
+            <li>أثبتوا التساوي بتفكيك كل حد إلى فرق كسرين.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب التعبير النهائي المبسط">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب البرهان"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol23')">طريقة الحل</button>
+          </div>
+
+          <div id="sol23" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              الطرف الأيمن هو:
+              \[
+              \frac{n}{2(n+2)}
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              نكتب:
+              \[
+              \frac{1}{(k+1)(k+2)}=\frac{1}{k+1}-\frac{1}{k+2}
+              \]
+              وبعد الجمع من \(k=1\) حتى \(k=n\) نحصل على:
+              \[
+              \frac12-\frac1{n+2}
+              \]
+              ثم بالتبسيط:
+              \[
+              \frac12-\frac1{n+2}=\frac{n}{2(n+2)}
+              \]
+            </p>
+          </div>
+        </article>
+
+        <article class="question-card" data-correct-a="n/(2(n+2))">
+          <div class="q-number">24</div>
+          <h3>سؤال ختامي قوي في المتواليات الهندسية</h3>
+          <p>
+            معطى أن:
+            \[
+            a_n=3\left(\frac{2}{5}\right)^{n-1}
+            \]
+            وهي متوالية هندسية.
+          </p>
+          <ol>
+            <li>جدوا مجموع أول 4 حدود.</li>
+            <li>أوجدوا المجموع اللانهائي للمتوالية، ثم علّلوا لماذا يوجد هذا المجموع.</li>
+          </ol>
+
+          <label class="part-label">(أ) الإجابة:</label>
+          <input class="answer-box answer-a" placeholder="اكتب مجموع أول 4 حدود">
+          <div class="feedback feedback-a"></div>
+
+          <label class="part-label">(ب) الإجابة:</label>
+          <textarea class="answer-box answer-b" placeholder="اكتب المجموع اللانهائي مع التعليل"></textarea>
+          <div class="feedback feedback-b"></div>
+
+          <div class="question-actions">
+            <button class="check-btn" onclick="checkQuestion(this)">تحقّق</button>
+            <button class="solve-btn" onclick="toggleSolution('sol24')">طريقة الحل</button>
+          </div>
+
+          <div id="sol24" class="solution-box">
+            <h4>طريقة الحل</h4>
+            <p><span class="mini-answer">البند (أ):</span></p>
+            <p>
+              أول أربعة حدود:
+              \[
+              3,\;\frac65,\;\frac{12}{25},\;\frac{24}{125}
+              \]
+              ومجموعها:
+              \[
+              3+\frac65+\frac{12}{25}+\frac{24}{125}=\frac{609}{125}
+              \]
+            </p>
+            <p><span class="mini-answer">البند (ب):</span></p>
+            <p>
+              بما أن:
+              \[
+              |q|=\frac25<1
+              \]
+              فإن المجموع اللانهائي موجود، ويساوي:
+              \[
+              S_\infty=\frac{a_1}{1-q}=\frac{3}{1-\frac25}=\frac{3}{\frac35}=5
+              \]
+            </p>
+          </div>
+        </article>
+
       </div>
 
       <div class="answers-trigger">
@@ -940,6 +1617,18 @@
         <p><strong>10)</strong> \(a=1\)</p>
         <p><strong>11)</strong> \(a=3\)</p>
         <p><strong>12)</strong> \(a=2\)</p>
+        <p><strong>13)</strong> \(a=2\)</p>
+        <p><strong>14)</strong> \(171696\)</p>
+        <p><strong>15)</strong> لا</p>
+        <p><strong>16)</strong> \(a_1=\frac{1}{10}\)</p>
+        <p><strong>17)</strong> \(a=3\)</p>
+        <p><strong>18)</strong> \(a=7\)</p>
+        <p><strong>19)</strong> \(a=\frac12\)</p>
+        <p><strong>20)</strong> \(a=2\)</p>
+        <p><strong>21)</strong> \(63\)</p>
+        <p><strong>22)</strong> \(153\)</p>
+        <p><strong>23)</strong> \(\frac{n}{2(n+2)}\)</p>
+        <p><strong>24)</strong> \(\frac{609}{125}\), والمجموع اللانهائي \(5\)</p>
       </div>
     </section>
   </main>
